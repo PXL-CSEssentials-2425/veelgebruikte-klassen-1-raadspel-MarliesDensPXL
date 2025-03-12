@@ -16,15 +16,18 @@ namespace Raadspel
     /// </summary>
     public partial class MainWindow : Window
     {
-        Random rnd = new Random();
+        Random rnd;
         int teRadenGetal;
-        int aantalBeurten = 0;
+        int aantalBeurten;
 
         public MainWindow()
         {
             InitializeComponent();
 
+
+            rnd = new Random();
             teRadenGetal = rnd.Next(1, 101);
+            aantalBeurten = 0;
         }
 
         private void evaluateButton_Click(object sender, RoutedEventArgs e)
@@ -60,6 +63,12 @@ namespace Raadspel
        
             teRadenGetal = rnd.Next(1, 101);
             aantalBeurten = 0;
+        }
+
+        private void endButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Ben je zeker dat je wil afsluiten?", "Bevestiging", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            Close();
         }
     }
 }
