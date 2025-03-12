@@ -24,7 +24,7 @@ namespace Raadspel
         {
             InitializeComponent();
 
-
+            // te raden getal maken
             rnd = new Random();
             teRadenGetal = rnd.Next(1, 101);
             aantalBeurten = 0;
@@ -32,10 +32,8 @@ namespace Raadspel
 
         private void evaluateButton_Click(object sender, RoutedEventArgs e)
         {
-            // te raden getal maken
-         
-            output2TextBox.Text = teRadenGetal.ToString();
-
+              
+            
             // controleren of getal geraden wordt
             if (int.TryParse(numberTextBox.Text, out int getal))
             {
@@ -52,10 +50,13 @@ namespace Raadspel
                 {
                     output1TextBox.Text = "Proficiat! U hebt het getal geraden!";
                 }
+                output2TextBox.Text = $"Je hebt {aantalBeurten.ToString()} keer geraden";
             }
             else
             {
                 //messagebox
+                MessageBox.Show("Geef een geheel getal in!", "waarschuwing");
+                numberTextBox.Clear();
             }
         }
         private void newButton_Click(object sender, RoutedEventArgs e)
@@ -63,12 +64,20 @@ namespace Raadspel
        
             teRadenGetal = rnd.Next(1, 101);
             aantalBeurten = 0;
+            numberTextBox.Clear();
+            output1TextBox.Clear();
+            output2TextBox.Clear();
+            numberTextBox.Focus();
         }
 
         private void endButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Ben je zeker dat je wil afsluiten?", "Bevestiging", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            Close();
+            MessageBoxResult result = MessageBox.Show("Ben je zeker dat je wil afsluiten?", "Bevestiging", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                Close();
+            }
+            
         }
     }
 }
