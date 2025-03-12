@@ -16,25 +16,27 @@ namespace Raadspel
     /// </summary>
     public partial class MainWindow : Window
     {
-       
+        Random rnd = new Random();
+        int teRadenGetal;
+        int aantalBeurten = 0;
+
         public MainWindow()
         {
             InitializeComponent();
-            
+
+            teRadenGetal = rnd.Next(1, 101);
         }
 
         private void evaluateButton_Click(object sender, RoutedEventArgs e)
         {
             // te raden getal maken
-            Random rnd = new Random();
-            int teRadenGetal = rnd.Next(1, 101);
+         
             output2TextBox.Text = teRadenGetal.ToString();
 
             // controleren of getal geraden wordt
-            int.TryParse(numberTextBox.Text, out int getal);
-
-            while (getal != teRadenGetal)
+            if (int.TryParse(numberTextBox.Text, out int getal))
             {
+                aantalBeurten++;
                 if (getal < teRadenGetal)
                 {
                     output1TextBox.Text = "Raad hoger!";
@@ -42,20 +44,22 @@ namespace Raadspel
                 else if (getal > teRadenGetal)
                 {
                     output1TextBox.Text = "Raad lager!";
+                } 
+                else if (getal == teRadenGetal)
+                {
+                    output1TextBox.Text = "Proficiat! U hebt het getal geraden!";
                 }
             }
-
-
-            if (getal == teRadenGetal)
+            else
             {
-                output1TextBox.Text = "Proficiat! U hebt het getal geraden!";
+                //messagebox
             }
         }
         private void newButton_Click(object sender, RoutedEventArgs e)
         {
-            // te raden getal maken
-            Random rnd = new Random();
-            int teRadenGetal = rnd.Next(1, 101);
+       
+            teRadenGetal = rnd.Next(1, 101);
+            aantalBeurten = 0;
         }
     }
 }
