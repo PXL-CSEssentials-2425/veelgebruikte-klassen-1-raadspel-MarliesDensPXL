@@ -32,8 +32,7 @@ namespace Raadspel
 
         private void evaluateButton_Click(object sender, RoutedEventArgs e)
         {
-              
-            
+                          
             // controleren of getal geraden wordt
             if (int.TryParse(numberTextBox.Text, out int getal))
             {
