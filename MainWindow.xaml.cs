@@ -8,7 +8,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Microsoft.VisualBasic;
 
 namespace Raadspel
 {
@@ -33,40 +32,43 @@ namespace Raadspel
 
         private void evaluateButton_Click(object sender, RoutedEventArgs e)
         {
-            bool isGuessed = false;
-            while (!isGuessed)
+              
+            
+            // controleren of getal geraden wordt
+            if (int.TryParse(numberTextBox.Text, out int getal))
             {
-                string invoer = Microsoft.VisualBasic.Interaction.InputBox("Geef een getal tussen 0 en 100", "Raadspel");
-
-                // controleren of getal geraden wordt
-                if (int.TryParse(invoer, out int getal))
+                aantalBeurten++;
+                if (getal < teRadenGetal)
                 {
-                    aantalBeurten++;
-                    if (getal < teRadenGetal)
-                    {
-                        MessageBox.Show("Raad hoger!", "Raadspel");
-
-                    }
-                    else if (getal > teRadenGetal)
-                    {
-                        MessageBox.Show("Raad lager!", "Raadspel");
-                    }
-                    else if (getal == teRadenGetal)
-                    {
-                        MessageBox.Show($"Proficiat! U hebt het getal geraden in {aantalBeurten.ToString()} beurten!", "Raadspel");
-                        isGuessed = true;
-                    }
-
+                    output1TextBox.Text = "Raad hoger!";
                 }
-                else
+                else if (getal > teRadenGetal)
                 {
-                    //messagebox
-                    MessageBox.Show("Geef een geheel getal in!", "waarschuwing");
-
+                    output1TextBox.Text = "Raad lager!";
+                } 
+                else if (getal == teRadenGetal)
+                {
+                    output1TextBox.Text = "Proficiat! U hebt het getal geraden!";
                 }
+                output2TextBox.Text = $"Je hebt {aantalBeurten.ToString()} keer geraden";
+            }
+            else
+            {
+                //messagebox
+                MessageBox.Show("Geef een geheel getal in!", "waarschuwing");
+                numberTextBox.Clear();
             }
         }
-      
+        private void newButton_Click(object sender, RoutedEventArgs e)
+        {
+       
+            teRadenGetal = rnd.Next(1, 101);
+            aantalBeurten = 0;
+            numberTextBox.Clear();
+            output1TextBox.Clear();
+            output2TextBox.Clear();
+            numberTextBox.Focus();
+        }
 
         private void endButton_Click(object sender, RoutedEventArgs e)
         {

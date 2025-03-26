@@ -7,10 +7,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" FontSize="18">
     <Grid>
-        <Label Content="Raad zo snel mogelijk het willekeurig getal tussen 0 en 100." HorizontalAlignment="Center" Margin="0,156,0,0" VerticalAlignment="Top" Width="642"/>
-
-        <Button Name="evaluateButton" Content="Start" HorizontalAlignment="Left" Margin="77,256,0,0" VerticalAlignment="Top" Height="76" Width="162" Click="evaluateButton_Click"/>
-        <Button Name="endButton" Content="Einde" HorizontalAlignment="Left" Margin="306,256,0,0" VerticalAlignment="Top" Height="76" Width="173" Click="endButton_Click" />
+        <Label Content="Geef een getal tussen 1 en 100:" HorizontalAlignment="Left" Margin="78,156,0,0" VerticalAlignment="Top" Width="322"/>
+        <TextBox Name="numberTextBox" HorizontalAlignment="Left" Margin="420,149,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="76" Height="33"/>
+        <TextBox Name="output1TextBox" HorizontalAlignment="Left" Margin="78,217,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="418" Height="34"/>
+        <TextBox Name="output2TextBox" HorizontalAlignment="Left" Margin="78,290,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="418" Height="37" />
+        <Button Name="evaluateButton" Content="Evalueer" HorizontalAlignment="Left" Margin="530,105,0,0" VerticalAlignment="Top" Height="77" Width="162" Click="evaluateButton_Click"/>
+        <Button Name="newButton" Content="Nieuw" HorizontalAlignment="Left" Margin="530,217,0,0" VerticalAlignment="Top" Height="77" Width="162" Background="LightBlue" Click="newButton_Click"/>
+        <Button Name="endButton" Content="Einde" HorizontalAlignment="Left" Margin="530,327,0,0" VerticalAlignment="Top" Height="64" Width="162" Click="endButton_Click" />
 
     </Grid>
 </Window>
